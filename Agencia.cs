@@ -24,8 +24,7 @@ namespace TP1
             misAlojamientos[alojAgregados] = aloj;
             alojAgregados++;
             return "Se ha ingresado el siguiente alojamiento: " +
-                misAlojamientos.ToString();
-                ;             
+                aloj.ToString();             
         }
 
         public bool estaAlojamiento(Alojamiento aloj)

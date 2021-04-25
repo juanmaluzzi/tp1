@@ -8,22 +8,32 @@ namespace TP1
         static void Main(string[] args)
         {
             Agencia agencia1 = new Agencia(10);
-            Console.WriteLine("Ingrese 1 si es administrador, 2 si es usuario");
-            int usuario = int.Parse(Console.ReadLine());
-            if (usuario != 2 || usuario != 1)
+            int menuInicial = 1;
+            int menuAdministrador = 1;
+            int menuUsuario = 1;
+
+            //COMIENZO DE BUCLE DE MENU INICIAL
+            do
+            {
+                Console.WriteLine("Ingresar 1 si es administrador, 2 si es usuario");
+                Console.WriteLine("o 3 para salir.");
+                int usuario = int.Parse(Console.ReadLine());
+
+                //VALIDA SI ES ADMINISTRADOR
+                if (usuario == 1)
                 {
-                Console.WriteLine("Valor Incorrecto");
-                }
-                else if (usuario == 1)
-                {
-                Console.WriteLine("Opción 1: Ingresar nuevas Cabañas");
-                Console.WriteLine("Opcion 2: Ingresar nuevos Hoteles");
-                Console.WriteLine("Opcion 3: Volver");
-                int choose = int.Parse(Console.ReadLine());
-                                    
-                switch (choose)
+                    //COMIENZO DE BUCLE ADMINSITRADOR
+                    do
+                    {
+                        Console.WriteLine("Opción 1: Ingresar nuevas Cabañas");
+                        Console.WriteLine("Opcion 2: Ingresar nuevos Hoteles");
+                        Console.WriteLine("Opcion 3: Volver");
+                        int choose = int.Parse(Console.ReadLine());
+
+                        //SELECTOR DE OPCIONES
+                        switch (choose)
                         {
-                            case 1: 
+                            case 1:
                                 Console.WriteLine("Ingrese codigo de cabaña");
                                 int codigoCab = int.Parse(Console.ReadLine());
                                 Console.WriteLine("Ingrese nombre de cabaña");
@@ -36,7 +46,7 @@ namespace TP1
                                 int estrellasCab = int.Parse(Console.ReadLine());
                                 Console.WriteLine("Ingrese cantidad de Personas");
                                 int cantPersonasCab = int.Parse(Console.ReadLine());
-                                Console.WriteLine("¿Tiene TV?");
+                                Console.WriteLine("¿Tiene TV? Ingrese true o false");
                                 bool tieneTv = bool.Parse(Console.ReadLine());
                                 Console.WriteLine("Precio por dia");
                                 float precioDia = float.Parse(Console.ReadLine());
@@ -45,16 +55,12 @@ namespace TP1
                                 Console.WriteLine("Ingrese cantidad de baños");
                                 int cantBanos = int.Parse(Console.ReadLine());
                                 //Guarda el array con los valores pasados por consola
-                                agencia1.insertarAlojamiento(new Cabaña(codigoCab, nombreCab, ciudadCab,
-                                barrioCab, estrellasCab, cantPersonasCab, tieneTv, precioDia, cantHabitaciones, cantBanos));
+
                                 //imprime el array 
-                                Console.WriteLine("Se ha ingresado la siguiente Cabaña: ");
-                                foreach (Alojamiento a in agencia1.getAlojamientos()) 
-                                    {
-                                    Console.WriteLine(a.ToString());                                                                
-                                    }     
-                            break;      
-                            
+                                Console.WriteLine(agencia1.insertarAlojamiento(new Cabaña(codigoCab, nombreCab, ciudadCab,
+                                barrioCab, estrellasCab, cantPersonasCab, tieneTv, precioDia, cantHabitaciones, cantBanos)));
+                                break;
+
                             case 2:
                                 Console.WriteLine("Ingrese codigo de hotel");
                                 int codigoHotel = int.Parse(Console.ReadLine());
@@ -71,32 +77,45 @@ namespace TP1
                                 Console.WriteLine("¿Tiene TV? Ingrese true o false");
                                 bool tieneTvHotel = bool.Parse(Console.ReadLine());
                                 Console.WriteLine("Precio por dia");
-                                float precioDiaHotel = float.Parse(Console.ReadLine()); 
+                                float precioDiaHotel = float.Parse(Console.ReadLine());
                                 agencia1.insertarAlojamiento(new Hotel(codigoHotel, nombreHotel, ciudadHotel,
                                 barrioHotel, estrellasHotel, cantPersonasHotel, tieneTvHotel, precioDiaHotel));
                                 //imprime el array 
                                 Console.WriteLine("Se ha ingresado el siguiente Hotel: ");
-                                foreach (Alojamiento a in agencia1.getAlojamientos()) 
-                                    {
-                                    Console.WriteLine(a.ToString());                                                                
-                                    }     
-                            break;
+                                foreach (Alojamiento a in agencia1.getAlojamientos())
+                                {
+                                    Console.WriteLine(a.ToString());
+                                }
+                                break;
 
                             case 3:
-                                Console.Clear();
-                            break;
+                                menuAdministrador = 0;
+                                break;
 
                             default:
-                                Console.WriteLine("Ingrese un número válido");
-                            break;
+                                Console.WriteLine("****Ingrese un número válido******");
+                                break;
 
-                         }
-
+                        }
+                    } while (menuAdministrador > 0);
+                    menuAdministrador = 1;
                 }
-                else if(usuario == 2)
+                else if (usuario == 2)
                 {
-                    //CODIGO PARA EL USUARIO, MOSTRAR CABAÑAS Y HOTELES
-                } 
+                    do
+                    {
+                        //CODIGO PARA EL USUARIO, MOSTRAR CABAÑAS Y HOTELES
+                    } while (menuUsuario > 0);
+                }
+                else if (usuario == 3) {
+                    Console.WriteLine("Chau");
+                    menuInicial = 0;
+                }
+                else
+                {
+                    Console.WriteLine("********Ingrese una opción válida********");
+                }
+            } while (menuInicial > 0);
         } 
     }
 }
