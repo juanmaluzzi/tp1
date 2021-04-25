@@ -11,24 +11,16 @@ namespace TP1
             Console.WriteLine("Ingrese 1 si es administrador, 2 si es usuario");
             int usuario = int.Parse(Console.ReadLine());
             if (usuario != 2 || usuario != 1)
-            {
+                {
                 Console.WriteLine("Valor Incorrecto");
-            }
-            else 
-            { 
-            if (usuario == 1)
-            {
+                }
+                else if (usuario == 1)
+                {
                 Console.WriteLine("Opción 1: Ingresar nuevas Cabañas");
                 Console.WriteLine("Opcion 2: Ingresar nuevos Hoteles");
                 Console.WriteLine("Opcion 3: Volver");
                 int choose = int.Parse(Console.ReadLine());
-                    
-                if (usuario >= 4 || usuario < 1) { 
-                    Console.WriteLine("Valor Incorrecto");
-
-                } 
-                else
-                { 
+                                    
                 switch (choose)
                         {
                             case 1: 
@@ -56,18 +48,30 @@ namespace TP1
                             agencia1.insertarAlojamiento(new Cabaña(codigoCab, nombreCab, ciudadCab,
                             barrioCab, estrellasCab, cantPersonasCab, tieneTv, precioDia, cantHabitaciones, cantBanos));
                             //imprime el array 
-                            Console.WriteLine("Se ha ingresado el siguiente alojamiento:");
-                            foreach (Alojamiento a in agencia1.getAlojamientos()) {
-                                Console.WriteLine(a.ToString());
-                                    break;
-                                    
-                        }           
+                            Console.WriteLine("Se ha ingresado el siguiente alojamiento: ");
+                            foreach (Alojamiento a in agencia1.getAlojamientos()) 
+                                {
+                                Console.WriteLine(a.ToString());                                                                
+                                }     
+                            break;      
                             
+                            case 2:
+                                 Console.WriteLine("asd");
+                            break;
+
+                            default:
+                                 Console.WriteLine("Default case");
+                            break;
+
+                         }
 
                 }
-
-            }
-        } }
+                else if(usuario == 2)
+                {
+                    //CODIGO PARA EL USUARIO, MOSTRAR CABAÑAS Y HOTELES
+                } 
+        } 
     }
 }
-    }
+
+    
