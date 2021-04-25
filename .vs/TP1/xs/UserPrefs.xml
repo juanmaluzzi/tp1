@@ -1,11 +1,11 @@
 ﻿<Properties StartupConfiguration="{7EF813CD-1C0A-40B2-A4DC-0F846723A805}|Default">
   <MonoDevelop.Ide.Workbench ActiveDocument="Program.cs">
     <Files>
-      <File FileName="Program.cs" Line="1" Column="1" />
-      <File FileName="Agencia.cs" Line="1" Column="1" />
-      <File FileName="Alojamiento.cs" Line="1" Column="1" />
-      <File FileName="Cabaña.cs" Line="1" Column="1" />
-      <File FileName="Hotel.cs" Line="1" Column="1" />
+      <File FileName="Program.cs" Line="34" Column="37" />
+      <File FileName="Agencia.cs" />
+      <File FileName="Alojamiento.cs" />
+      <File FileName="Cabaña.cs" />
+      <File FileName="Hotel.cs" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
