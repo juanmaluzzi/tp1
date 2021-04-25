@@ -10,16 +10,12 @@ namespace TP1
             Agencia agencia1 = new Agencia(10);
             Console.WriteLine("Ingrese 1 si es administrador, 2 si es usuario");
             int usuario = int.Parse(Console.ReadLine());
-            if (usuario != 2 || usuario != 1)
+                if (usuario == 1)
                 {
-                Console.WriteLine("Valor Incorrecto");
-                }
-                else if (usuario == 1)
-                {
-                Console.WriteLine("Opción 1: Ingresar nuevas Cabañas");
-                Console.WriteLine("Opcion 2: Ingresar nuevos Hoteles");
-                Console.WriteLine("Opcion 3: Volver");
-                int choose = int.Parse(Console.ReadLine());
+                    Console.WriteLine("Opción 1: Ingresar nuevas Cabañas");
+                    Console.WriteLine("Opcion 2: Ingresar nuevos Hoteles");
+                    Console.WriteLine("Opcion 3: Volver");
+                    int choose = int.Parse(Console.ReadLine());
                                     
                 switch (choose)
                         {
@@ -95,6 +91,35 @@ namespace TP1
                 }
                 else if(usuario == 2)
                 {
+                    Console.WriteLine("Ingrese: ");
+                    Console.WriteLine("1 - Para mostrar todos los alojamientos ordenados ");
+                    Console.WriteLine("2 - Para mostrar todas las cabañas");
+                    Console.WriteLine("3 - Para mostrar todos los hoteles");
+                    int userOption = int.Parse(Console.ReadLine());
+                    
+                    if(userOption == 1)
+                        {
+                            Alojamiento[] alojamientosOrdenados = agencia1.getAlojamientos();
+
+                            foreach(Alojamiento alojamientos in alojamientosOrdenados )
+                            { 
+                                Console.WriteLine("Alojamiento con mas estrellas: " + alojamientos.getEstrellas()
+                                + "\nCantidad de personas: " + alojamientos.getCantPersonas()
+                                + "\nCodigo de alojamiento: " + alojamientos.getCodigo());        
+                            } 
+                        }
+                    else if(userOption == 2)
+                        {
+                            
+                            Alojamiento[] alojamientosCabanas = agencia1.getAlojamientos();
+                            foreach(Cabaña alojCab in alojamientosCabanas)
+                            {                             
+                                if(alojCab.getPrecioDia() > 500 && alojCab.getPrecioDia() < 1000 )
+                                {
+                                    Console.WriteLine(alojCab.ToString());       
+                                }
+                            }
+                        }      
                     //CODIGO PARA EL USUARIO, MOSTRAR CABAÑAS Y HOTELES
                 } 
         } 

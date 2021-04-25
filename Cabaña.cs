@@ -24,9 +24,9 @@ namespace TP1
             baños = Baños;
         }
 
-        public void setPrecioPorPersona(float nuevoPrecioPP) { precioDia = nuevoPrecioPP; }
+        public void setPrecioDia(float nuevoPrecioPP) { precioDia = nuevoPrecioPP; }
 
-        public float getPrecioPorPersona() { return precioDia; }
+        public float getPrecioDia() { return precioDia; }
 
         public void setHabitaciones(int Habitaciones) { habitaciones = Habitaciones; }
 

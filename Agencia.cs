@@ -65,7 +65,7 @@ namespace TP1
                 if (a is Cabaña)
                 {
                     Cabaña cabana = (Cabaña)a;
-                    if (cabana.getPrecioPorPersona() >= menor && cabana.getPrecioPorPersona() <= mayor)
+                    if (cabana.getPrecioDia() >= menor && cabana.getPrecioDia() <= mayor)
                         cabPrecios.insertarAlojamiento(cabana);
                 }
                     
