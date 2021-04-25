@@ -10,7 +10,7 @@ namespace TP1
             Agencia agencia1 = new Agencia(10);
             Console.WriteLine("Ingrese 1 si es administrador, 2 si es usuario");
             int usuario = int.Parse(Console.ReadLine());
-            if (usuario >= 3 || usuario < 1)
+            if (usuario > 2 || usuario < 1)
             {
                 Console.WriteLine("Valor Incorrecto");
             }
@@ -51,9 +51,17 @@ namespace TP1
                     int cantHabitaciones = int.Parse(Console.ReadLine());
                     Console.WriteLine("Ingrese cantidad de baños");
                     int cantBanos = int.Parse(Console.ReadLine());
-
+                            //Guarda el array con los valores pasados por consola
                     agencia1.insertarAlojamiento(new Cabaña(codigoCab, nombreCab, ciudadCab,
-                        barrioCab, estrellasCab, cantPersonasCab, tieneTv, precioDia, cantHabitaciones, cantBanos));
+                    barrioCab, estrellasCab, cantPersonasCab, tieneTv, precioDia, cantHabitaciones, cantBanos));
+                            //imprime el array 
+                            Console.WriteLine("Se ha ingresado el siguiente alojamiento:");
+                            foreach (Alojamiento a in agencia1.getAlojamientos()) {
+                                Console.WriteLine(a.ToString());
+                            }
+                           
+                            
+
                 }
 
             }

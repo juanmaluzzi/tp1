@@ -19,11 +19,13 @@ namespace TP1
         }
         
         
-        public bool insertarAlojamiento (Alojamiento aloj)
+        public string insertarAlojamiento (Alojamiento aloj)
         {
             misAlojamientos[alojAgregados] = aloj;
             alojAgregados++;
-            return true;             
+            return "Se ha ingresado el siguiente alojamiento: " +
+                misAlojamientos.ToString();
+                ;             
         }
 
         public bool estaAlojamiento(Alojamiento aloj)
@@ -63,7 +65,7 @@ namespace TP1
                 if (a is Cabaña)
                 {
                     Cabaña cabana = (Cabaña)a;
-                    if (cabana.getPrecioPorPersona() <= menor && cabana.getPrecioPorPersona() >= mayor)
+                    if (cabana.getPrecioPorPersona() >= menor && cabana.getPrecioPorPersona() <= mayor)
                         cabPrecios.insertarAlojamiento(cabana);
                 }
                     
@@ -78,7 +80,7 @@ namespace TP1
             Alojamiento[] aloj = new Alojamiento [alojAgregados];
             for (int i = 0; i < alojAgregados; i ++)
                 aloj[i] = misAlojamientos[i];
-            return misAlojamientos.OrderBy(a => a.getEstrellas()).ThenBy(a => a.getCantPersonas()).ThenBy(a => a.getCodigo()).ToArray();
+                return aloj.OrderBy(a => a.getEstrellas()).ThenBy(a => a.getCantPersonas()).ThenBy(a => a.getCodigo()).ToArray();
         }
     }
 }
