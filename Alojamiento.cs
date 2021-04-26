@@ -16,7 +16,7 @@ namespace TP1
 
         public override string ToString()
         {
-            return codigo + " - " + nombre + " - " + ciudad + " - " + barrio + " - " + estrellas;
+            return "Cod: "+ codigo + "/ Nombre: " + nombre + "/ Ciudad: " + ciudad + "/ Barrio " + barrio + "/ Estrellas: " + estrellas;
         }
         public bool igualCodigo(Alojamiento a)
         {

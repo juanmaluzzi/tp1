@@ -64,7 +64,7 @@ namespace TP1
                 if (a is Cabaña)
                 {
                     Cabaña cabana = (Cabaña)a;
-                    if (cabana.getPrecioPorPersona() >= menor && cabana.getPrecioPorPersona() <= mayor)
+                    if (cabana.getPrecioDia() >= menor && cabana.getPrecioDia() <= mayor)
                         cabPrecios.insertarAlojamiento(cabana);
                 }
                     
@@ -77,9 +77,15 @@ namespace TP1
         public Alojamiento[] getAlojamientos()
         {
             Alojamiento[] aloj = new Alojamiento [alojAgregados];
-            for (int i = 0; i < alojAgregados; i ++)
-                aloj[i] = misAlojamientos[i];
-                return aloj.OrderBy(a => a.getEstrellas()).ThenBy(a => a.getCantPersonas()).ThenBy(a => a.getCodigo()).ToArray();
+
+            for (int i = 0; i < alojAgregados; i++)
+                {
+                    aloj[i] = misAlojamientos[i];
+                }
+
+            return aloj.OrderBy(a => a.getEstrellas()).ThenBy(a => a.getCantPersonas()).ThenBy(a => a.getCodigo()).ToArray();
+            
+
         }
     }
 }

@@ -15,8 +15,11 @@ namespace TP1
             //COMIENZO DE BUCLE DE MENU INICIAL
             do
             {
-                Console.WriteLine("Ingresar 1 si es administrador, 2 si es usuario");
-                Console.WriteLine("o 3 para salir.");
+                Console.WriteLine("***********************************");
+                Console.WriteLine("Ingrese el número de opción deseada: ");
+                Console.WriteLine("Opción 1: Usuario Administrador");
+                Console.WriteLine("Opción 2: Usuario Cliente");
+                Console.WriteLine("Opción 3: Salir");
                 int usuario = int.Parse(Console.ReadLine());
 
                 //VALIDA SI ES ADMINISTRADOR
@@ -25,6 +28,8 @@ namespace TP1
                     //COMIENZO DE BUCLE ADMINSITRADOR
                     do
                     {
+                        Console.WriteLine("***********************************");
+                        Console.WriteLine("Ingrese el número de opción deseada:");
                         Console.WriteLine("Opción 1: Ingresar nuevas Cabañas");
                         Console.WriteLine("Opcion 2: Ingresar nuevos Hoteles");
                         Console.WriteLine("Opcion 3: Volver");
@@ -46,17 +51,21 @@ namespace TP1
                                 int estrellasCab = int.Parse(Console.ReadLine());
                                 Console.WriteLine("Ingrese cantidad de Personas");
                                 int cantPersonasCab = int.Parse(Console.ReadLine());
-                                Console.WriteLine("¿Tiene TV? Ingrese true o false");
-                                bool tieneTv = bool.Parse(Console.ReadLine());
+                                Console.WriteLine("¿Tiene TV?  (Opción 1: SI / Opción 0: NO");
+                                int readTieneTv = int.Parse(Console.ReadLine());
                                 Console.WriteLine("Precio por dia");
                                 float precioDia = float.Parse(Console.ReadLine());
                                 Console.WriteLine("Ingrese cantidad de habitaciones");
                                 int cantHabitaciones = int.Parse(Console.ReadLine());
                                 Console.WriteLine("Ingrese cantidad de baños");
                                 int cantBanos = int.Parse(Console.ReadLine());
-                                //Guarda el array con los valores pasados por consola
 
-                                //imprime el array 
+                                // Traduce el ingreso del usuario a bool
+                                bool tieneTv;
+                                if (readTieneTv == 1) { tieneTv = true; }
+                                else{ tieneTv = false; }
+
+                                // Guarda el array con los valores pasados por consola e imprime el Obj guardado
                                 Console.WriteLine(agencia1.insertarAlojamiento(new Cabaña(codigoCab, nombreCab, ciudadCab,
                                 barrioCab, estrellasCab, cantPersonasCab, tieneTv, precioDia, cantHabitaciones, cantBanos)));
                                 break;
@@ -74,26 +83,29 @@ namespace TP1
                                 int estrellasHotel = int.Parse(Console.ReadLine());
                                 Console.WriteLine("Ingrese cantidad de Personas");
                                 int cantPersonasHotel = int.Parse(Console.ReadLine());
-                                Console.WriteLine("¿Tiene TV? Ingrese true o false");
-                                bool tieneTvHotel = bool.Parse(Console.ReadLine());
+                                Console.WriteLine("¿Tiene TV?  (Opción 1: SI / Opción 0: NO");
+                                int readTieneTvHotel = int.Parse(Console.ReadLine());
                                 Console.WriteLine("Precio por dia");
                                 float precioDiaHotel = float.Parse(Console.ReadLine());
-                                agencia1.insertarAlojamiento(new Hotel(codigoHotel, nombreHotel, ciudadHotel,
-                                barrioHotel, estrellasHotel, cantPersonasHotel, tieneTvHotel, precioDiaHotel));
-                                //imprime el array 
-                                Console.WriteLine("Se ha ingresado el siguiente Hotel: ");
-                                foreach (Alojamiento a in agencia1.getAlojamientos())
-                                {
-                                    Console.WriteLine(a.ToString());
-                                }
+
+                                // Traduce el ingreso del usuario a bool
+                                bool tieneTvHotel;
+                                if (readTieneTvHotel == 1) { tieneTvHotel = true; }
+                                else { tieneTvHotel = false; }
+
+
+                                // Guarda el array con los valores pasados por consola e imprime el Obj guardado
+                                Console.WriteLine(agencia1.insertarAlojamiento(new Hotel(codigoHotel, nombreHotel, ciudadHotel,
+                                barrioHotel, estrellasHotel, cantPersonasHotel, tieneTvHotel, precioDiaHotel)));
                                 break;
 
                             case 3:
+                                //VOLVER AL MENU ANTERIOR
                                 menuAdministrador = 0;
                                 break;
 
                             default:
-                                Console.WriteLine("****Ingrese un número válido******");
+                                Console.WriteLine("****Ingrese un número válido****");
                                 break;
 
                         }
@@ -104,6 +116,45 @@ namespace TP1
                 {
                     do
                     {
+                        Console.WriteLine("**********************************");
+                        Console.WriteLine("Ingrese el número de opción deseada: ");
+                        Console.WriteLine("Opción 1: Para mostrar todos los alojamientos ordenados");
+                        Console.WriteLine("Opción 2: Mostrar cabañas entre rango de precios");
+                        Console.WriteLine("Opción 3: Mostrar todos los hoteles");
+                        Console.WriteLine("Opción 4: Volver");
+                        int userOption = int.Parse(Console.ReadLine());
+
+                        if (userOption == 1)
+                        {
+                            foreach (Alojamiento a in agencia1.getAlojamientos())
+                            {
+
+                                Console.WriteLine(a.ToString());
+                            }
+                        }
+                        else if (userOption == 2)
+                        {
+
+                            Alojamiento[] alojamientosCabanas = agencia1.getAlojamientos();
+                            foreach (Cabaña alojCab in alojamientosCabanas)
+                            {
+                                if (alojCab.getPrecioDia() > 500 && alojCab.getPrecioDia() < 1000)
+                                {
+                                    Console.WriteLine(alojCab.ToString());
+                                }
+                                else
+                                {
+                                    Console.WriteLine("No hay cabañas disponibles en ese rango de precios");
+                                }
+                            }
+                        }
+                        else if (userOption == 3)
+                        {
+                            //MOSTRAR TODOS LOS HOTELES
+                        }
+                        else if (userOption == 4) {
+                            menuUsuario = 0;
+                        }
                         //CODIGO PARA EL USUARIO, MOSTRAR CABAÑAS Y HOTELES
                     } while (menuUsuario > 0);
                 }
@@ -113,7 +164,7 @@ namespace TP1
                 }
                 else
                 {
-                    Console.WriteLine("********Ingrese una opción válida********");
+                    Console.WriteLine("****Ingrese una opción válida****");
                 }
             } while (menuInicial > 0);
         } 
