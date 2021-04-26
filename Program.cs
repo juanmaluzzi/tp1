@@ -119,7 +119,18 @@ namespace TP1
                                     Console.WriteLine(alojCab.ToString());       
                                 }
                             }
-                        }      
+                        }
+                    else if(userOption == 3)
+                        {
+                            Alojamiento[] alojamientosCabanas = agencia1.getAlojamientos();
+                            foreach(Hotel alojHotel in alojamientosCabanas)
+                            {                             
+                                if(alojHotel.getEstrellas() > 500 && alojHotel.getEstrellas() < 1000 )
+                                {
+                                    Console.WriteLine(alojHotel.ToString());       
+                                }
+                            }
+                        }           
                     //CODIGO PARA EL USUARIO, MOSTRAR CABAÑAS Y HOTELES
                 } 
         } 
