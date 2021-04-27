@@ -11,6 +11,7 @@ namespace TP1
             int menuInicial = 1;
             int menuAdministrador = 1;
             int menuUsuario = 1;
+            int menuPrice = 1;
 
             //COMIENZO DE BUCLE DE MENU INICIAL
             do
@@ -128,34 +129,84 @@ namespace TP1
                         {
                             foreach (Alojamiento a in agencia1.getAlojamientos())
                             {
-
                                 Console.WriteLine(a.ToString());
                             }
                         }
                         else if (userOption == 2)
                         {
+                            Console.WriteLine("1 - Mostrar cabanas entre $100 y $999");
+                            Console.WriteLine("2 - Mostrar cabanas entre $1000 y $1999");                 
+                            Console.WriteLine("3 - Mostrar todas las cabanas por un precio superior a $2000");
+                            Console.WriteLine("4 - Volver atras");
+                            int priceRange = int.Parse(Console.ReadLine());
 
-                            Alojamiento[] alojamientosCabanas = agencia1.getAlojamientos();
-                            foreach (Cabaña alojCab in alojamientosCabanas)
+                            do
                             {
-                                if (alojCab.getPrecioDia() > 500 && alojCab.getPrecioDia() < 1000)
+                                if (priceRange == 1) 
                                 {
-                                    Console.WriteLine(alojCab.ToString());
+                                Alojamiento[] alojamientosCabanas = agencia1.getAlojamientos();
+                                foreach (Cabaña alojCab in alojamientosCabanas)
+                                    {
+                                    if (alojCab.getPrecioDia() >= 500 && alojCab.getPrecioDia() < 1000)
+                                        {
+                                        Console.WriteLine(alojCab.ToString());
+                                        }
+                                    else
+                                        {
+                                        Console.WriteLine("No hay cabañas disponibles en este rango de precios");
+                                        }
+                                    }
                                 }
-                                else
+                                else if (priceRange == 2)
                                 {
-                                    Console.WriteLine("No hay cabañas disponibles en ese rango de precios");
+                                Alojamiento[] alojamientosCabanas = agencia1.getAlojamientos();
+                                foreach (Cabaña alojCab in alojamientosCabanas)
+                                    {
+                                    if (alojCab.getPrecioDia() > 1000 && alojCab.getPrecioDia() < 2000)
+                                        {
+                                        Console.WriteLine(alojCab.ToString());
+                                        }
+                                    else
+                                        {
+                                        Console.WriteLine("No hay cabañas disponibles en este rango de precios");
+                                        }
+                                    }        
                                 }
-                            }
+                                else if (priceRange == 3)
+                                {
+                                Alojamiento[] alojamientosCabanas = agencia1.getAlojamientos();
+                                foreach (Cabaña alojCab in alojamientosCabanas)
+                                    {
+                                    if (alojCab.getPrecioDia() > 2000)
+                                        {
+                                        Console.WriteLine(alojCab.ToString());
+                                        }
+                                    else
+                                        {
+                                        Console.WriteLine("No hay cabañas disponibles en este rango de precios");
+                                        }
+                                    }    
+                                }
+                                else if(priceRange == 4)
+                                {
+                                    menuPrice = 0;
+                                }
+
+                            } while (menuPrice > 0);
+
                         }
                         else if (userOption == 3)
                         {
-                            //MOSTRAR TODOS LOS HOTELES
+                            Alojamiento[] alojamientosHotel = agencia1.getAlojamientos();
+                            foreach(Hotel alojHotel in alojamientosHotel)
+                            {
+                                Console.WriteLine(alojHotel.ToString());
+                            }
                         }
                         else if (userOption == 4) {
                             menuUsuario = 0;
                         }
-                        //CODIGO PARA EL USUARIO, MOSTRAR CABAÑAS Y HOTELES
+                        
                     } while (menuUsuario > 0);
                 }
                 else if (usuario == 3) {
